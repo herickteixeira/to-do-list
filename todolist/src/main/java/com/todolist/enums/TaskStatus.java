@@ -4,5 +4,5 @@ public enum TaskStatus {
 
     INITIATED,
     PROGRESS,
-    COMPLETED;
+    COMPLETED
 }

@@ -46,7 +46,6 @@ public class TaskService {
                 .orElseGet(() -> {
                     return taskRepository.save(newTask);
                 });
-
     }
 
     public void deleteTask(Long id){

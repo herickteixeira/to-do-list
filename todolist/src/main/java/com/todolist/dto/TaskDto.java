@@ -2,12 +2,12 @@ package com.todolist.dto;
 
 import com.todolist.enums.Priority;
 import com.todolist.enums.TaskStatus;
-import com.todolist.model.Task;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
+import java.util.Date;
 
 
 @Data
@@ -15,8 +15,6 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 public class TaskDto {
 
-
-    private Long id;
 
     @NotBlank
     private String title;
@@ -30,8 +28,9 @@ public class TaskDto {
     @NotBlank
     private TaskStatus taskStatus;
 
-    public TaskDto(Task task) {
-    }
+    @NotBlank
+    private Date createdAt;
 
-
+    @NotBlank
+    private Date updatedAt;
 }
