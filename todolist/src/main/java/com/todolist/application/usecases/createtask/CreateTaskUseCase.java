@@ -1,0 +1,28 @@
+package com.todolist.application.usecases.createtask;
+
+import com.todolist.domain.aggregates.task.TaskRepository;
+import com.todolist.domain.service.CreateTaskDomainService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class CreateTaskUseCase {
+
+    @Autowired
+    private TaskRepository taskRepository;
+
+    @Autowired
+    private CreateTaskDomainService createTaskDomainService;
+
+    public TaskResponse execute(TaskRequest request) {
+
+        var task = createTaskDomainService.execute(
+                request.getDescription(),
+                request.getPriority(),
+                request.getTitle());
+
+        task = taskRepository.save(task);
+
+        return TaskResponseFactory.create(task);
+    }
+}
