@@ -24,9 +24,4 @@ public class TaskRequest {
     @NotBlank
     private TaskStatus taskStatus;
 
-    @NotBlank
-    private Date createdAt;
-
-    @NotBlank
-    private Date updatedAt;
 }

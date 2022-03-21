@@ -1,5 +1,7 @@
-package com.todolist.domain.aggregates.task;
+package com.todolist.domain.entities;
 
+import com.todolist.domain.aggregates.task.Priority;
+import com.todolist.domain.aggregates.task.TaskStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

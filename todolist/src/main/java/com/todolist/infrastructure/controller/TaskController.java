@@ -4,7 +4,7 @@ import com.todolist.application.TaskService;
 import com.todolist.application.usecases.createtask.CreateTaskUseCase;
 import com.todolist.application.usecases.createtask.TaskRequest;
 import com.todolist.application.usecases.createtask.TaskResponse;
-import com.todolist.domain.aggregates.task.Task;
+import com.todolist.domain.entities.Task;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

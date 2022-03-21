@@ -1,6 +1,6 @@
 package com.todolist.application.usecases.createtask;
 
-import com.todolist.domain.aggregates.task.Task;
+import com.todolist.domain.entities.Task;
 
 public class TaskResponseFactory {
     public static TaskResponse create(Task task) {

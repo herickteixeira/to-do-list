@@ -1,7 +1,7 @@
 package com.todolist.application;
 
-import com.todolist.domain.aggregates.task.Task;
-import com.todolist.domain.aggregates.task.TaskRepository;
+import com.todolist.domain.entities.Task;
+import com.todolist.domain.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
