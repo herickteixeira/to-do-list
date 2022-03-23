@@ -2,6 +2,7 @@ package com.todolist.infrastructure.controller;
 
 import com.todolist.application.TaskService;
 import com.todolist.application.usecases.createtask.CreateTaskUseCase;
+import com.todolist.application.usecases.createtask.GetAllTasksUserCase;
 import com.todolist.application.usecases.createtask.TaskRequest;
 import com.todolist.application.usecases.createtask.TaskResponse;
 import com.todolist.domain.entities.Task;
@@ -26,6 +27,9 @@ public class TaskController {
     @Autowired
     CreateTaskUseCase createTaskUseCase;
 
+    @Autowired
+    GetAllTasksUserCase getAllTasksUserCase;
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
@@ -35,12 +39,20 @@ public class TaskController {
     }
 
     @GetMapping
+    @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public List<TaskResponse> getAllTasks() {
-        return taskService.getAllTasks().stream()
-                .map(this::convertToDto)
-                .collect(Collectors.toList());
+    public  ResponseEntity<?> getAllTasks(){
+        var response = getAllTasksUserCase.execute();
+        return ResponseEntity.ok().build();
     }
+
+//    @GetMapping
+//    @ResponseBody
+//    public List<TaskResponse> getAllTasks() {
+//        return taskService.getAllTasks().stream()
+//                .map(this::convertToDto)
+//                .collect(Collectors.toList());
+//    }
 
     @GetMapping("{id}")
     @ResponseBody
