@@ -43,7 +43,7 @@ public class TaskController {
     @ResponseBody
     public  ResponseEntity<?> getAllTasks(){
         var response = getAllTasksUserCase.execute();
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(response);
     }
 
 //    @GetMapping
