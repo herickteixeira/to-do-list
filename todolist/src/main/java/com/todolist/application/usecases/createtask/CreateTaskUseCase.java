@@ -21,6 +21,7 @@ public class CreateTaskUseCase {
                 request.getPriority(),
                 request.getTitle());
 
+
         task = taskRepository.save(task);
 
         return TaskResponseFactory.create(task);

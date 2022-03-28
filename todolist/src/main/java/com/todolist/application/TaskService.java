@@ -13,12 +13,12 @@ public class TaskService {
     @Autowired
     TaskRepository taskRepository;
 
-    public Task create(Task task){
+    public Task create(Task task) {
 
         return taskRepository.save(task);
     }
 
-    public List<Task> getAllTasks(){
+    public List<Task> getAllTasks() {
 
         return taskRepository.findAll();
     }
@@ -27,7 +27,7 @@ public class TaskService {
 
         Task task = taskRepository.findById(id).get();
 
-        if(task == null) {
+        if (task == null) {
             throw new RuntimeException("NOT FOUND");
         }
         return task;
@@ -48,7 +48,7 @@ public class TaskService {
                 });
     }
 
-    public void deleteTask(Long id){
+    public void deleteTask(Long id) {
         taskRepository.deleteById(id);
     }
 

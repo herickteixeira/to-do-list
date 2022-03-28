@@ -17,9 +17,9 @@ public class TaskResponseFactory {
         return response;
     }
 
-    public static List<TaskResponse> getAllTasks(){
-        var response = new ArrayList<TaskResponse>();
-
-        return response;
+    public static List<TaskResponse> create(List<Task> tasks) {
+        var responses = new ArrayList<TaskResponse>();
+        for (var task : tasks) responses.add(create(task));
+        return responses;
     }
 }

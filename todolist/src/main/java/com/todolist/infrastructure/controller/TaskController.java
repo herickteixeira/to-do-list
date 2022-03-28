@@ -12,9 +12,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @RestController
 public class TaskController {
 
@@ -41,18 +38,10 @@ public class TaskController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public  ResponseEntity<?> getAllTasks(){
+    public ResponseEntity<?> getAllTasks() {
         var response = getAllTasksUserCase.execute();
         return ResponseEntity.ok(response);
     }
-
-//    @GetMapping
-//    @ResponseBody
-//    public List<TaskResponse> getAllTasks() {
-//        return taskService.getAllTasks().stream()
-//                .map(this::convertToDto)
-//                .collect(Collectors.toList());
-//    }
 
     @GetMapping("{id}")
     @ResponseBody
