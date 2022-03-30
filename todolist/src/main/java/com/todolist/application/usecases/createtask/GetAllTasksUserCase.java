@@ -13,9 +13,6 @@ public class GetAllTasksUserCase {
     @Autowired
     private TaskRepository taskRepository;
 
-    @Autowired
-    private GetAllDomainService getAllDomainService;
-
     public List<TaskResponse> execute() {
         var tasks = taskRepository.findAll();
         return TaskResponseFactory.create(tasks);

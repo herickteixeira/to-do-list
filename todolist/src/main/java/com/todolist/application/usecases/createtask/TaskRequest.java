@@ -7,20 +7,45 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 
-@Getter
-@Setter
 public class TaskRequest {
 
-    @NotBlank
     private String title;
-
-    @NotBlank
     private String description;
-
-    @NotBlank
     private Priority priority;
-
-    @NotBlank
     private TaskStatus taskStatus;
 
+    public TaskRequest(){
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+    public TaskStatus getTaskStatus() {
+        return taskStatus;
+    }
+
+    public void setTaskStatus(TaskStatus taskStatus) {
+        this.taskStatus = taskStatus;
+    }
 }

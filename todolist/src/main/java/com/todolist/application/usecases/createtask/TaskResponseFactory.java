@@ -8,7 +8,6 @@ import java.util.List;
 public class TaskResponseFactory {
     public static TaskResponse create(Task task) {
         var response = new TaskResponse();
-        response.setId(task.getId());
         response.setCreatedAt(task.getCreatedAt());
         response.setPriority(task.getPriority());
         response.setTitle(task.getTitle());

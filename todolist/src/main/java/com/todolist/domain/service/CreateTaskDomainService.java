@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CreateTaskDomainService {
     public Task execute(String description, Priority priority, String title) {
-        var task = new Task();
+        var task = new Task(title, description, priority);
         task.setDescription(description);
         task.setPriority(priority);
         task.setTitle(title);

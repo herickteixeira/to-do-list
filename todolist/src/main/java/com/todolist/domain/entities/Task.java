@@ -10,9 +10,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.util.Date;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 public class Task {
 
@@ -38,4 +36,83 @@ public class Task {
     private Priority priority;
 
     private TaskStatus taskStatus;
+
+    public Task(Long id, String title, String description, Date createdAt, Date updatedAt, Priority priority, TaskStatus taskStatus) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.priority = priority;
+        this.taskStatus = taskStatus;
+    }
+
+    public Task(String title, String description, Priority priority) {
+        this.title = title;
+        this.description = description;
+        this.priority = priority;
+    }
+
+    public static Task create(String title, String description, Priority priority) {
+        var task = new Task(title, description, priority);
+        if(task == null) new IllegalArgumentException("Object invalid");
+
+        return task;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
+    }
+
+    public TaskStatus getTaskStatus() {
+        return taskStatus;
+    }
+
+    public void setTaskStatus(TaskStatus taskStatus) {
+        this.taskStatus = taskStatus;
+    }
 }
