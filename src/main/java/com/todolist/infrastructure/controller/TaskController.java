@@ -27,6 +27,9 @@ public class TaskController {
     @Autowired
     GetTaskByIdUseCase getTaskByIdUseCase;
 
+    @Autowired
+    DeleteTaskById deleteTaskById;
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
@@ -60,8 +63,10 @@ public class TaskController {
     }
 
     @DeleteMapping("{id}")
-    public void deleteTask(@PathVariable Long id) {
-        taskService.deleteTask(id);
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Long> deleteTaskById(@PathVariable Long id) {
+        deleteTaskById.deleteTaskById(id);
+        return ResponseEntity.ok().build();
     }
 
 
