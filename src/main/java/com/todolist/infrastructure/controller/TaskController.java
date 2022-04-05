@@ -1,8 +1,6 @@
 package com.todolist.infrastructure.controller;
 
 import com.todolist.application.usecases.*;
-import com.todolist.application.usecases.createtask.*;
-import com.todolist.domain.Task;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,9 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TaskController {
-
-    @Autowired
-    TaskService taskService;
 
     @Autowired
     ModelMapper modelMapper;
@@ -70,14 +65,5 @@ public class TaskController {
     public ResponseEntity<?> deleteTaskById(@PathVariable Long id) {
         deleteTaskById.execute(id);
         return ResponseEntity.ok().build();
-    }
-
-
-    private TaskResponse convertToDto(Task task) {
-        return modelMapper.map(task, TaskResponse.class);
-    }
-
-    private Task convertToEntity(TaskRequest request) {
-        return modelMapper.map(request, Task.class);
     }
 }

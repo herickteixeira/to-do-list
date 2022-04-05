@@ -1,6 +1,7 @@
 package com.todolist.domain.service;
 
 import com.todolist.domain.aggregates.task.Priority;
+import com.todolist.domain.aggregates.task.TaskStatus;
 import org.junit.jupiter.api.Test;
 import shared.mocks.TaskMock;
 
@@ -11,10 +12,11 @@ class CreateTaskDomainServiceTest {
 
     @Test
     void shouldCreateDomainService() {
-        var task = CreateTaskDomainService.execute(TaskMock.title, TaskMock.description, TaskMock.priority);
+        var task = CreateTaskDomainService.execute(TaskMock.title, TaskMock.description, TaskMock.priority, TaskStatus.INITIATED);
         assertNotNull(task);
         assertEquals("Criar uma API rest", task.getTitle());
         assertEquals("Utilizar a linguagem Java", task.getDescription());
         assertEquals(Priority.HIGH, task.getPriority());
+        assertEquals(TaskStatus.INITIATED, task.getTaskStatus());
     }
 }

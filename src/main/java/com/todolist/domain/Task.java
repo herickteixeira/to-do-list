@@ -5,7 +5,7 @@ import com.todolist.domain.aggregates.task.TaskStatus;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -23,21 +23,22 @@ public class Task {
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     @CreationTimestamp
     @Column(name = "updated_at", nullable = false)
-    private Date updatedAt;
+    private LocalDateTime updatedAt;
 
     @Column(nullable = false)
     private Priority priority;
 
+    @Column(nullable = false)
     private TaskStatus taskStatus;
 
     public Task() {
     }
 
-    public Task(Long id, String title, String description, Date createdAt, Date updatedAt, Priority priority, TaskStatus taskStatus) {
+    public Task(Long id, String title, String description, LocalDateTime createdAt, LocalDateTime updatedAt, Priority priority, TaskStatus taskStatus) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -47,14 +48,15 @@ public class Task {
         this.taskStatus = taskStatus;
     }
 
-    public Task(String title, String description, Priority priority) {
+    public Task(String title, String description, Priority priority, TaskStatus taskStatus) {
         this.title = title;
         this.description = description;
         this.priority = priority;
+        this.taskStatus = taskStatus;
     }
 
-    public static Task create(String title, String description, Priority priority) {
-        var task = new Task(title, description, priority);
+    public static Task create(String title, String description, Priority priority, TaskStatus taskStatus) {
+        var task = new Task(title, description, priority, taskStatus);
         if (task == null) {
             new IllegalArgumentException("Object invalid");
         }
@@ -86,19 +88,19 @@ public class Task {
         this.description = description;
     }
 
-    public Date getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 

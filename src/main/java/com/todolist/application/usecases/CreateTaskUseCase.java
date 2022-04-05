@@ -19,7 +19,8 @@ public class CreateTaskUseCase {
         var task = createTaskDomainService.execute(
                 request.getTitle(),
                 request.getDescription(),
-                request.getPriority());
+                request.getPriority(),
+                request.getTaskStatus());
 
         task = taskRepository.save(task);
 

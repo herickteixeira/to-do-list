@@ -11,7 +11,7 @@ public class UpdateTaskUseCase {
 
     public TaskResponse execute(Long id, TaskRequest request) {
         var task = taskRepository.findById(id);
-        if (id == null) throw new RuntimeException("NOT FOUND");
+        if (id == null) throw new IllegalArgumentException("NOT FOUND");
         task.map(response -> {
             response.setTitle(request.getTitle());
             response.setDescription(request.getDescription());
