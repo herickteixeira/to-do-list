@@ -13,6 +13,7 @@ public class TaskResponseFactory {
         response.setTitle(task.getTitle());
         response.setDescription(task.getDescription());
         response.setPriority(task.getPriority());
+        response.setTaskStatus(task.getTaskStatus());
         response.setCreatedAt(task.getCreatedAt());
         response.setUpdatedAt(task.getUpdatedAt());
         return response;
@@ -30,6 +31,7 @@ public class TaskResponseFactory {
         response.setTitle(task.get().getTitle());
         response.setDescription(task.get().getDescription());
         response.setPriority(task.get().getPriority());
+        response.setTaskStatus(task.get().getTaskStatus());
         response.setCreatedAt(task.get().getCreatedAt());
         response.setUpdatedAt(task.get().getUpdatedAt());
         return response;

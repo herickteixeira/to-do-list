@@ -12,7 +12,7 @@ public class CreateTaskDomainService {
         task.setTitle(title);
         task.setDescription(description);
         task.setPriority(priority);
-        task.setTaskStatus(taskStatus.INITIATED);
+        task.setTaskStatus(taskStatus);
         return task;
     }
 }
