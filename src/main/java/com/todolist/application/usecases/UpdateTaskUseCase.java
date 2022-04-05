@@ -9,9 +9,6 @@ public class UpdateTaskUseCase {
     @Autowired
     TaskRepository taskRepository;
 
-    @Autowired
-    CreateTaskUseCase createTaskUseCase;
-
     public TaskResponse execute(Long id, TaskRequest request) {
         var task = taskRepository.findById(id);
         if (id == null) throw new RuntimeException("NOT FOUND");
