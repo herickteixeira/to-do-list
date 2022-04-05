@@ -1,4 +1,4 @@
-package com.todolist.application.usecases.createtask;
+package com.todolist.application.usecases;
 
 import com.todolist.domain.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,7 @@ public class GetTaskByIdUseCase {
     @Autowired
     TaskRepository taskRepository;
 
-    public TaskResponse execute(Long id){
+    public TaskResponse execute(Long id) {
         var task = taskRepository.findById(id);
         return TaskResponseFactory.create(task);
     }

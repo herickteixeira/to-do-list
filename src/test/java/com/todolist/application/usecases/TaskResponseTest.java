@@ -1,11 +1,12 @@
-package com.todolist.application.usecases.createtask;
+package com.todolist.application.usecases;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import shared.mocks.TaskMock;
 import shared.mocks.TaskResponseMock;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class TaskResponseTest {
 

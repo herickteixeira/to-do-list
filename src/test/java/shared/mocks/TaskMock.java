@@ -1,7 +1,7 @@
 package shared.mocks;
 
-import com.todolist.domain.aggregates.task.Priority;
 import com.todolist.domain.Task;
+import com.todolist.domain.aggregates.task.Priority;
 
 public class TaskMock {
 
@@ -9,7 +9,7 @@ public class TaskMock {
     public static final String description = "Utilizar a linguagem Java";
     public static final Priority priority = Priority.HIGH;
 
-    public static Task create(){
+    public static Task create() {
         return Task.create(TaskMock.title, TaskMock.description, TaskMock.priority);
     }
 }

@@ -1,4 +1,4 @@
-package com.todolist.application.usecases.createtask;
+package com.todolist.application.usecases;
 
 import com.todolist.domain.Task;
 
@@ -32,6 +32,17 @@ public class TaskResponseFactory {
         response.setPriority(task.get().getPriority());
         response.setCreatedAt(task.get().getCreatedAt());
         response.setUpdatedAt(task.get().getUpdatedAt());
+        return response;
+    }
+
+    public static TaskResponse update(Task task) {
+        var response = new TaskResponse();
+        response.setId(task.getId());
+        response.setTitle(task.getTitle());
+        response.setDescription(task.getDescription());
+        response.setPriority(task.getPriority());
+        response.setCreatedAt(task.getCreatedAt());
+        response.setUpdatedAt(task.getUpdatedAt());
         return response;
     }
 }

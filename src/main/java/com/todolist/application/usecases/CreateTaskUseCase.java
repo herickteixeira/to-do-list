@@ -1,4 +1,4 @@
-package com.todolist.application.usecases.createtask;
+package com.todolist.application.usecases;
 
 import com.todolist.domain.repository.TaskRepository;
 import com.todolist.domain.service.CreateTaskDomainService;

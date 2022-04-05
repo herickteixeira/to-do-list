@@ -1,6 +1,6 @@
 package com.todolist.infrastructure.controller;
 
-import com.todolist.application.TaskService;
+import com.todolist.application.usecases.*;
 import com.todolist.application.usecases.createtask.*;
 import com.todolist.domain.Task;
 import org.modelmapper.ModelMapper;
@@ -30,6 +30,9 @@ public class TaskController {
     @Autowired
     DeleteTaskById deleteTaskById;
 
+    @Autowired
+    UpdateTaskUseCase updateTaskUseCase;
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
@@ -56,16 +59,16 @@ public class TaskController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<?> updateTask(@PathVariable Long id, @RequestBody TaskRequest request) throws Exception {
-        Task task = convertToEntity(request);
-        return ResponseEntity.ok(convertToDto(taskService.updateTask(id, task)));
+    public ResponseEntity<?> updateTask(@PathVariable Long id, @RequestBody TaskRequest request) {
+        var response = updateTaskUseCase.execute(id, request);
+        return ResponseEntity.ok(response);
 
     }
 
     @DeleteMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<Long> deleteTaskById(@PathVariable Long id) {
-        deleteTaskById.deleteTaskById(id);
+    public ResponseEntity<?> deleteTaskById(@PathVariable Long id) {
+        deleteTaskById.execute(id);
         return ResponseEntity.ok().build();
     }
 

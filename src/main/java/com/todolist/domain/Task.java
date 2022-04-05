@@ -55,7 +55,7 @@ public class Task {
 
     public static Task create(String title, String description, Priority priority) {
         var task = new Task(title, description, priority);
-        if(task == null){
+        if (task == null) {
             new IllegalArgumentException("Object invalid");
         }
 

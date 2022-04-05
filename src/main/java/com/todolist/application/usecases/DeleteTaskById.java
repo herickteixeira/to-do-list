@@ -1,4 +1,4 @@
-package com.todolist.application.usecases.createtask;
+package com.todolist.application.usecases;
 
 import com.todolist.domain.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,7 @@ public class DeleteTaskById {
     @Autowired
     TaskRepository taskRepository;
 
-    public void deleteTaskById(Long id){
+    public void execute(Long id) {
         var task = taskRepository.getById(id);
         if (id == null) throw new RuntimeException("NOT FOUND");
 
