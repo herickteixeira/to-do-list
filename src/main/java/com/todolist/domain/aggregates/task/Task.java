@@ -60,13 +60,15 @@ public class Task {
         this.taskStatus = taskStatus;
     }
 
-    public static Task create(String title, String description, Priority priority, TaskStatus taskStatus) {
-        var task = new Task(title, description, priority, taskStatus);
-        if (task == null) {
-            new IllegalArgumentException("Object invalid");
-        }
+    public static Task create(
+            String title, String description, Priority priority, TaskStatus taskStatus) {
+        return new Task(title, description, priority, taskStatus);
+    }
 
-        return task;
+    public void update(String title, String description, Priority priority) {
+        this.title = title;
+        this.description = description;
+        this.priority = priority;
     }
 
     public Long getId() {
@@ -123,11 +125,5 @@ public class Task {
 
     public void setTaskStatus(TaskStatus taskStatus) {
         this.taskStatus = taskStatus;
-    }
-
-    public void update(String title, String description, Priority priority) {
-        this.title = title;
-        this.description = description;
-        this.priority = priority;
     }
 }
