@@ -12,7 +12,10 @@ class CreateTaskDomainServiceTest {
 
     @Test
     void shouldCreateDomainService() {
-        var task = CreateTaskDomainService.execute(TaskMock.title, TaskMock.description, TaskMock.priority, TaskStatus.INITIATED);
+
+        var service = new CreateTaskDomainService();
+
+        var task = service.execute(TaskMock.title, TaskMock.description, TaskMock.priority, TaskStatus.INITIATED);
         assertNotNull(task);
         assertEquals("Criar uma API rest", task.getTitle());
         assertEquals("Utilizar a linguagem Java", task.getDescription());
