@@ -6,18 +6,22 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UpdateTaskUseCase {
+
     @Autowired
     TaskRepository taskRepository;
 
     public TaskResponse execute(Long id, TaskRequest request) {
-        var task = taskRepository.findById(id);
-        if (id == null) throw new IllegalArgumentException("NOT FOUND");
-        task.map(response -> {
-            response.setTitle(request.getTitle());
-            response.setDescription(request.getDescription());
-            response.setPriority(request.getPriority());
-            return taskRepository.save(response);
-        });
+        var optionalTask = taskRepository.findById(id);
+
+        if (optionalTask.isEmpty())
+            throw new IllegalArgumentException("NOT FOUND");
+
+        var task = optionalTask.get();
+
+        task.update(request.getTitle(), request.getDescription(), request.getPriority());
+
+        taskRepository.save(task);
+
         return TaskResponseFactory.create(task);
     }
 }
