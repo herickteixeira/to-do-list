@@ -3,8 +3,8 @@ package com.todolist.application.usecases.task.create;
 import com.todolist.application.usecases.task.shared.TaskRequest;
 import com.todolist.application.usecases.task.shared.TaskResponse;
 import com.todolist.application.usecases.task.shared.TaskResponseMapper;
+import com.todolist.domain.aggregates.task.Task;
 import com.todolist.domain.aggregates.task.TaskRepository;
-import com.todolist.domain.service.task.CreateTaskDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,25 +12,20 @@ import org.springframework.stereotype.Component;
 public class CreateTaskUseCase {
 
     private final TaskRepository taskRepository;
-    private final CreateTaskDomainService createTaskDomainService;
 
     @Autowired
     public CreateTaskUseCase(
-            TaskRepository taskRepository,
-            CreateTaskDomainService createTaskDomainService) {
+            TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
-        this.createTaskDomainService = createTaskDomainService;
     }
 
     public TaskResponse execute(TaskRequest request) {
 
-        var task = createTaskDomainService.execute(
-                request.getTitle(),
+        var task = Task.create(request.getTitle(),
                 request.getDescription(),
-                request.getPriority(),
-                request.getTaskStatus());
+                request.getPriority());
 
-        task = taskRepository.save(task);
+        taskRepository.save(task);
 
         return TaskResponseMapper.map(task);
     }

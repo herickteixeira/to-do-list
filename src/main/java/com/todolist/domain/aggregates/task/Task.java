@@ -1,42 +1,28 @@
 package com.todolist.domain.aggregates.task;
 
-import org.hibernate.annotations.CreationTimestamp;
-
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
-
-@Entity
 public class Task {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @Column(nullable = false)
     private String title;
-
-    @Column(columnDefinition = "TEXT", nullable = false)
     private String description;
-
-    @CreationTimestamp
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt;
-
-    @CreationTimestamp
-    @Column(name = "updated_at", nullable = false)
+    private final LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-
-    @Column(nullable = false)
     private Priority priority;
+    private final TaskStatus taskStatus;
 
-    @Column(nullable = false)
-    private TaskStatus taskStatus;
-
-    public Task() {
+    private Task(
+            String title,
+            String description,
+            Priority priority) {
+        this.title = title;
+        this.description = description;
+        this.priority = priority;
+        this.createdAt = LocalDateTime.now();
+        this.taskStatus = TaskStatus.INITIATED;
     }
 
-    public Task(
+    private Task(
             Long id,
             String title,
             String description,
@@ -53,77 +39,53 @@ public class Task {
         this.taskStatus = taskStatus;
     }
 
-    public Task(String title, String description, Priority priority, TaskStatus taskStatus) {
-        this.title = title;
-        this.description = description;
-        this.priority = priority;
-        this.taskStatus = taskStatus;
+    public static Task materialize(
+            Long id,
+            String title,
+            String description,
+            LocalDateTime createdAt,
+            LocalDateTime updatedAt,
+            Priority priority,
+            TaskStatus taskStatus) {
+        return new Task(id, title, description, createdAt, updatedAt, priority, taskStatus);
     }
 
-    public static Task create(
-            String title, String description, Priority priority, TaskStatus taskStatus) {
-        return new Task(title, description, priority, taskStatus);
+    public static Task create(String title, String description, Priority priority) {
+        return new Task(title, description, priority);
     }
 
     public void update(String title, String description, Priority priority) {
         this.title = title;
         this.description = description;
         this.priority = priority;
+        this.updatedAt = LocalDateTime.now();
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public LocalDateTime getCreatedAt() {
         return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     public Priority getPriority() {
         return priority;
     }
 
-    public void setPriority(Priority priority) {
-        this.priority = priority;
-    }
-
     public TaskStatus getTaskStatus() {
         return taskStatus;
-    }
-
-    public void setTaskStatus(TaskStatus taskStatus) {
-        this.taskStatus = taskStatus;
     }
 }

@@ -20,6 +20,6 @@ public class DeleteTaskByIdUseCase {
         if (optionalTask.isEmpty())
             throw new RuntimeException("NOT FOUND");
 
-        taskRepository.delete(optionalTask.get());
+        taskRepository.delete(optionalTask.get().getId());
     }
 }
