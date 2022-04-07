@@ -1,6 +1,6 @@
 package shared.mocks;
 
-import com.todolist.application.usecases.TaskRequest;
+import com.todolist.application.usecases.task.shared.TaskRequest;
 
 public class TaskRequestMock {
     public static TaskRequest create() {

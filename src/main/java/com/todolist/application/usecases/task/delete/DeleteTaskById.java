@@ -1,6 +1,6 @@
-package com.todolist.application.usecases;
+package com.todolist.application.usecases.task.delete;
 
-import com.todolist.domain.repository.TaskRepository;
+import com.todolist.domain.aggregates.task.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

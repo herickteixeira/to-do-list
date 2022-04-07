@@ -1,6 +1,8 @@
-package com.todolist.application.usecases;
+package com.todolist.application.usecases.task.get;
 
-import com.todolist.domain.repository.TaskRepository;
+import com.todolist.application.usecases.task.shared.TaskResponse;
+import com.todolist.application.usecases.task.shared.TaskResponseMapper;
+import com.todolist.domain.aggregates.task.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +16,6 @@ public class GetAllTasksUserCase {
 
     public List<TaskResponse> execute() {
         var tasks = taskRepository.findAll();
-        return TaskResponseFactory.create(tasks);
+        return TaskResponseMapper.map(tasks);
     }
 }

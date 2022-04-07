@@ -1,6 +1,6 @@
 package shared.mocks;
 
-import com.todolist.application.usecases.TaskResponse;
+import com.todolist.application.usecases.task.shared.TaskResponse;
 
 public class TaskResponseMock {
 

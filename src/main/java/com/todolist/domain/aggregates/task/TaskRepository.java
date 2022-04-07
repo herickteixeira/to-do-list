@@ -1,6 +1,5 @@
-package com.todolist.domain.repository;
+package com.todolist.domain.aggregates.task;
 
-import com.todolist.domain.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

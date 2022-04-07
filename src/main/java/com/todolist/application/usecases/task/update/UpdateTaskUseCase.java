@@ -1,6 +1,9 @@
-package com.todolist.application.usecases;
+package com.todolist.application.usecases.task.update;
 
-import com.todolist.domain.repository.TaskRepository;
+import com.todolist.application.usecases.task.shared.TaskRequest;
+import com.todolist.application.usecases.task.shared.TaskResponse;
+import com.todolist.application.usecases.task.shared.TaskResponseMapper;
+import com.todolist.domain.aggregates.task.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +25,6 @@ public class UpdateTaskUseCase {
 
         taskRepository.save(task);
 
-        return TaskResponseFactory.create(task);
+        return TaskResponseMapper.map(task);
     }
 }

@@ -1,7 +1,5 @@
-package com.todolist.domain;
+package com.todolist.domain.aggregates.task;
 
-import com.todolist.domain.aggregates.task.Priority;
-import com.todolist.domain.aggregates.task.TaskStatus;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;

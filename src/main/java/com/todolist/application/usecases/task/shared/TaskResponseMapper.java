@@ -1,12 +1,12 @@
-package com.todolist.application.usecases;
+package com.todolist.application.usecases.task.shared;
 
-import com.todolist.domain.Task;
+import com.todolist.domain.aggregates.task.Task;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskResponseFactory {
-    public static TaskResponse create(Task task) {
+public class TaskResponseMapper {
+    public static TaskResponse map(Task task) {
         var response = new TaskResponse();
         response.setId(task.getId());
         response.setTitle(task.getTitle());
@@ -18,9 +18,9 @@ public class TaskResponseFactory {
         return response;
     }
 
-    public static List<TaskResponse> create(List<Task> tasks) {
+    public static List<TaskResponse> map(List<Task> tasks) {
         var responses = new ArrayList<TaskResponse>();
-        for (var task : tasks) responses.add(create(task));
+        for (var task : tasks) responses.add(map(task));
         return responses;
     }
 }
