@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/tasks")
 public class TaskController {
 
     @Autowired
@@ -41,7 +42,7 @@ public class TaskController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public ResponseEntity<?> getTaskById(@PathVariable Long id) {
@@ -51,13 +52,14 @@ public class TaskController {
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
     public ResponseEntity<?> updateTask(@PathVariable Long id, @RequestBody TaskRequest request) {
         var response = updateTaskUseCase.execute(id, request);
         return ResponseEntity.ok(response);
 
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> deleteTaskById(@PathVariable Long id) {
         deleteTaskById.execute(id);
