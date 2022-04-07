@@ -9,8 +9,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class GetTaskByIdUseCase {
 
+    private final TaskRepository taskRepository;
+
     @Autowired
-    TaskRepository taskRepository;
+    public GetTaskByIdUseCase(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
 
     public TaskResponse execute(Long id) {
         var optionalTask = taskRepository.findById(id);

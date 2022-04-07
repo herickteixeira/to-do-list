@@ -1,7 +1,7 @@
 package com.todolist.domain.service.task;
 
-import com.todolist.domain.aggregates.task.Task;
 import com.todolist.domain.aggregates.task.Priority;
+import com.todolist.domain.aggregates.task.Task;
 import com.todolist.domain.aggregates.task.TaskStatus;
 import org.springframework.stereotype.Component;
 

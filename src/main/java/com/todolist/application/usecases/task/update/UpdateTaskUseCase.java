@@ -10,8 +10,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class UpdateTaskUseCase {
 
+    private final TaskRepository taskRepository;
+
     @Autowired
-    TaskRepository taskRepository;
+    public UpdateTaskUseCase(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
 
     public TaskResponse execute(Long id, TaskRequest request) {
         var optionalTask = taskRepository.findById(id);

@@ -11,8 +11,12 @@ import java.util.List;
 @Component
 public class GetAllTasksUserCase {
 
+    private final TaskRepository taskRepository;
+
     @Autowired
-    private TaskRepository taskRepository;
+    public GetAllTasksUserCase(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
 
     public List<TaskResponse> execute() {
         var tasks = taskRepository.findAll();

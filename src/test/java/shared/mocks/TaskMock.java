@@ -1,7 +1,7 @@
 package shared.mocks;
 
-import com.todolist.domain.aggregates.task.Task;
 import com.todolist.domain.aggregates.task.Priority;
+import com.todolist.domain.aggregates.task.Task;
 import com.todolist.domain.aggregates.task.TaskStatus;
 
 public class TaskMock {

@@ -11,11 +11,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class CreateTaskUseCase {
 
-    @Autowired
-    private TaskRepository taskRepository;
+    private final TaskRepository taskRepository;
+    private final CreateTaskDomainService createTaskDomainService;
 
     @Autowired
-    private CreateTaskDomainService createTaskDomainService;
+    public CreateTaskUseCase(
+            TaskRepository taskRepository,
+            CreateTaskDomainService createTaskDomainService) {
+        this.taskRepository = taskRepository;
+        this.createTaskDomainService = createTaskDomainService;
+    }
 
     public TaskResponse execute(TaskRequest request) {
 

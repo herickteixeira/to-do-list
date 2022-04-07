@@ -1,7 +1,7 @@
 package com.todolist.infrastructure.controller;
 
 import com.todolist.application.usecases.task.create.CreateTaskUseCase;
-import com.todolist.application.usecases.task.delete.DeleteTaskById;
+import com.todolist.application.usecases.task.delete.DeleteTaskByIdUseCase;
 import com.todolist.application.usecases.task.get.GetAllTasksUserCase;
 import com.todolist.application.usecases.task.get.GetTaskByIdUseCase;
 import com.todolist.application.usecases.task.shared.TaskRequest;
@@ -15,16 +15,25 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/tasks")
 public class TaskController {
 
+    private final CreateTaskUseCase createTaskUseCase;
+    private final GetAllTasksUserCase getAllTasksUserCase;
+    private final GetTaskByIdUseCase getTaskByIdUseCase;
+    private final DeleteTaskByIdUseCase deleteTaskByIdUseCase;
+    private final UpdateTaskUseCase updateTaskUseCase;
+
     @Autowired
-    CreateTaskUseCase createTaskUseCase;
-    @Autowired
-    GetAllTasksUserCase getAllTasksUserCase;
-    @Autowired
-    GetTaskByIdUseCase getTaskByIdUseCase;
-    @Autowired
-    DeleteTaskById deleteTaskById;
-    @Autowired
-    UpdateTaskUseCase updateTaskUseCase;
+    public TaskController(
+            CreateTaskUseCase createTaskUseCase,
+            GetAllTasksUserCase getAllTasksUserCase,
+            GetTaskByIdUseCase getTaskByIdUseCase,
+            DeleteTaskByIdUseCase deleteTaskByIdUseCase,
+            UpdateTaskUseCase updateTaskUseCase) {
+        this.createTaskUseCase = createTaskUseCase;
+        this.getAllTasksUserCase = getAllTasksUserCase;
+        this.getTaskByIdUseCase = getTaskByIdUseCase;
+        this.deleteTaskByIdUseCase = deleteTaskByIdUseCase;
+        this.updateTaskUseCase = updateTaskUseCase;
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -62,7 +71,7 @@ public class TaskController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<?> deleteTaskById(@PathVariable Long id) {
-        deleteTaskById.execute(id);
+        deleteTaskByIdUseCase.execute(id);
         return ResponseEntity.ok().build();
     }
 }

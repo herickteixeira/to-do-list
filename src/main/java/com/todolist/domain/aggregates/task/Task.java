@@ -36,7 +36,14 @@ public class Task {
     public Task() {
     }
 
-    public Task(Long id, String title, String description, LocalDateTime createdAt, LocalDateTime updatedAt, Priority priority, TaskStatus taskStatus) {
+    public Task(
+            Long id,
+            String title,
+            String description,
+            LocalDateTime createdAt,
+            LocalDateTime updatedAt,
+            Priority priority,
+            TaskStatus taskStatus) {
         this.id = id;
         this.title = title;
         this.description = description;

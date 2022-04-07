@@ -12,9 +12,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
-        http
-                .formLogin().disable()
+        http.formLogin().disable()
                 .csrf().disable()
                 .httpBasic()
                 .and()
@@ -23,8 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
+        auth.inMemoryAuthentication()
                 .withUser("user01")
                 .password("{noop}123")
                 .roles("ADM");
