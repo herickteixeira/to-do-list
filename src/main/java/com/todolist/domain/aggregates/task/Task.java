@@ -9,7 +9,7 @@ public class Task {
     private final LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private Priority priority;
-    private final TaskStatus taskStatus;
+    private TaskStatus taskStatus;
 
     private Task(
             String title,
@@ -58,6 +58,14 @@ public class Task {
         this.title = title;
         this.description = description;
         this.priority = priority;
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    public void updateStatus(String title, String description, Priority priority, TaskStatus taskStatus) {
+        this.title = title;
+        this.description = description;
+        this.priority = priority;
+        this.taskStatus = taskStatus;
         this.updatedAt = LocalDateTime.now();
     }
 

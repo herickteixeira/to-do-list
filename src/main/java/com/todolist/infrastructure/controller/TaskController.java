@@ -5,7 +5,10 @@ import com.todolist.application.usecases.task.delete.DeleteTaskByIdUseCase;
 import com.todolist.application.usecases.task.get.GetAllTasksUserCase;
 import com.todolist.application.usecases.task.get.GetTaskByIdUseCase;
 import com.todolist.application.usecases.task.shared.TaskRequest;
+import com.todolist.application.usecases.task.shared.TaskStatusRequest;
+import com.todolist.application.usecases.task.update.UpdateTaskStatusUseCase;
 import com.todolist.application.usecases.task.update.UpdateTaskUseCase;
+import com.todolist.domain.aggregates.task.TaskStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,19 +23,21 @@ public class TaskController {
     private final GetTaskByIdUseCase getTaskByIdUseCase;
     private final DeleteTaskByIdUseCase deleteTaskByIdUseCase;
     private final UpdateTaskUseCase updateTaskUseCase;
+    private final UpdateTaskStatusUseCase updateTaskStatusUseCase;
 
     @Autowired
-    public TaskController(
-            CreateTaskUseCase createTaskUseCase,
-            GetAllTasksUserCase getAllTasksUserCase,
-            GetTaskByIdUseCase getTaskByIdUseCase,
-            DeleteTaskByIdUseCase deleteTaskByIdUseCase,
-            UpdateTaskUseCase updateTaskUseCase) {
+    public TaskController(CreateTaskUseCase createTaskUseCase,
+                          GetAllTasksUserCase getAllTasksUserCase,
+                          GetTaskByIdUseCase getTaskByIdUseCase,
+                          DeleteTaskByIdUseCase deleteTaskByIdUseCase,
+                          UpdateTaskUseCase updateTaskUseCase,
+                          UpdateTaskStatusUseCase updateTaskStatusUseCase) {
         this.createTaskUseCase = createTaskUseCase;
         this.getAllTasksUserCase = getAllTasksUserCase;
         this.getTaskByIdUseCase = getTaskByIdUseCase;
         this.deleteTaskByIdUseCase = deleteTaskByIdUseCase;
         this.updateTaskUseCase = updateTaskUseCase;
+        this.updateTaskStatusUseCase = updateTaskStatusUseCase;
     }
 
     @PostMapping
@@ -59,13 +64,20 @@ public class TaskController {
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public ResponseEntity<?> updateTask(@PathVariable Long id, @RequestBody TaskRequest request) {
         var response = updateTaskUseCase.execute(id, request);
         return ResponseEntity.ok(response);
+    }
 
+    @PutMapping("/status/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public ResponseEntity<?> updateStatus(@PathVariable Long id, @RequestBody TaskStatusRequest status) {
+        var response = updateTaskStatusUseCase.execute(id, status);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")
