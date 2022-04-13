@@ -18,9 +18,9 @@ public class TaskRepositoryMysql implements TaskRepository {
 
     @Override
     public Optional<Task> findById(Long id) {
-
-        var entity = springData.getById(id);
-        return Optional.of(TaskMapper.map(entity));
+        var optionalTask = springData.findById(id);
+        if (optionalTask.isEmpty()) return Optional.empty();
+        return Optional.of(TaskMapper.map(optionalTask.get()));
 
     }
 

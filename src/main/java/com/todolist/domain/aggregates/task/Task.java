@@ -61,10 +61,7 @@ public class Task {
         this.updatedAt = LocalDateTime.now();
     }
 
-    public void updateStatus(String title, String description, Priority priority, TaskStatus taskStatus) {
-        this.title = title;
-        this.description = description;
-        this.priority = priority;
+    public void updateStatus(TaskStatus taskStatus) {
         this.taskStatus = taskStatus;
         this.updatedAt = LocalDateTime.now();
     }

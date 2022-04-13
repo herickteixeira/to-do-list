@@ -64,7 +64,7 @@ public class TaskController {
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public ResponseEntity<?> updateTask(@PathVariable Long id, @RequestBody TaskRequest request) {
@@ -72,7 +72,7 @@ public class TaskController {
         return ResponseEntity.ok(response);
     }
 
-    @PutMapping("/status/{id}")
+    @PostMapping("/{id}/status")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
     public ResponseEntity<?> updateStatus(@PathVariable Long id, @RequestBody TaskStatusRequest status) {

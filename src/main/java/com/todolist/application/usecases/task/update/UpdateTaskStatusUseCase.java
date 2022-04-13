@@ -26,7 +26,7 @@ public class UpdateTaskStatusUseCase {
 
         var task = optionalTask.get();
 
-        task.updateStatus(task.getTitle(), task.getDescription(), task.getPriority(), status.getTaskStatus());
+        task.updateStatus(status.getTaskStatus());
 
         taskRepository.save(task);
 
