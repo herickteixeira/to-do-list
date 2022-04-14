@@ -3,10 +3,10 @@ package com.todolist.domain.aggregates.task;
 import java.time.LocalDateTime;
 
 public class Task {
+    private final LocalDateTime createdAt;
     private Long id;
     private String title;
     private String description;
-    private final LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private Priority priority;
     private TaskStatus taskStatus;

@@ -8,6 +8,7 @@ public class TaskRequestMock {
     public static final String title = "Criar uma API rest";
     public static final String description = "Utilizar a linguagem Java";
     public static final Priority priority = Priority.HIGH;
+
     public static TaskRequest create() {
         var taskRequest = new TaskRequest();
         taskRequest.setTitle(TaskRequestMock.title);

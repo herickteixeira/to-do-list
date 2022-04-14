@@ -4,7 +4,6 @@ import com.todolist.application.usecases.task.shared.TaskResponse;
 import com.todolist.application.usecases.task.shared.TaskResponseMapper;
 import com.todolist.application.usecases.task.shared.TaskStatusRequest;
 import com.todolist.domain.aggregates.task.TaskRepository;
-import com.todolist.domain.aggregates.task.TaskStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

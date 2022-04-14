@@ -8,7 +8,6 @@ import com.todolist.application.usecases.task.shared.TaskRequest;
 import com.todolist.application.usecases.task.shared.TaskStatusRequest;
 import com.todolist.application.usecases.task.update.UpdateTaskStatusUseCase;
 import com.todolist.application.usecases.task.update.UpdateTaskUseCase;
-import com.todolist.domain.aggregates.task.TaskStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
