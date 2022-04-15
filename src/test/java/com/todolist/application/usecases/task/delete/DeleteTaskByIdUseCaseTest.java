@@ -9,7 +9,7 @@ import shared.mocks.TaskMock;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.times;
@@ -38,7 +38,7 @@ class DeleteTaskByIdUseCaseTest {
     }
 
     @Test
-    @DisplayName("Don't return id")
+    @DisplayName("Not found id")
     void shouldNotReturnId() {
         var useCase = new DeleteTaskByIdUseCase(taskRepository);
         Mockito.when(taskRepository.findById(any()).isEmpty()).thenThrow(RuntimeException.class);
