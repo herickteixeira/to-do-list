@@ -2,6 +2,7 @@ package com.todolist.infrastructure.persistence.mysql.repository;
 
 import com.todolist.domain.aggregates.task.Task;
 import com.todolist.domain.aggregates.task.TaskRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public class TaskRepositoryMysql implements TaskRepository {
 
     private final TaskRepositorySpringData springData;
 
+    @Autowired
     public TaskRepositoryMysql(TaskRepositorySpringData springData) {
         this.springData = springData;
     }
