@@ -1,4 +1,4 @@
-package com.todolist.infrastructure.controller;
+package com.todolist.controller;
 
 import com.todolist.application.usecases.task.create.CreateTaskUseCase;
 import com.todolist.application.usecases.task.delete.DeleteTaskByIdUseCase;
