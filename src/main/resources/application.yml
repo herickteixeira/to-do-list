@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: to-do-list
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/tasks-db

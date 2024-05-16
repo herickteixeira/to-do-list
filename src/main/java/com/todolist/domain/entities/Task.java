@@ -2,11 +2,13 @@ package com.todolist.domain.entities;
 
 import com.todolist.domain.enums.Priority;
 import com.todolist.domain.enums.TaskStatus;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
 
 @Getter
+@AllArgsConstructor
 public class Task {
     private Long id;
     private final LocalDateTime createdAt;

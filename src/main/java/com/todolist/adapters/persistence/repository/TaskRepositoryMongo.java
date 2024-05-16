@@ -1,7 +1,7 @@
 package com.todolist.adapters.persistence.repository;
 
-import com.todolist.domain.entities.Task;
+import com.todolist.adapters.persistence.entities.TaskEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface TaskRepositoryMongo extends MongoRepository<Task, Long> {
+public interface TaskRepositoryMongo extends MongoRepository<TaskEntity, Long> {
 }
