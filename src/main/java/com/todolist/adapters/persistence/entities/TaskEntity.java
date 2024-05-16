@@ -1,4 +1,4 @@
-package com.todolist.adapters.persistence.entitiesJpa;
+package com.todolist.adapters.persistence.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
