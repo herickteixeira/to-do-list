@@ -1,7 +1,6 @@
 package com.todolist.adapters.persistence.repository;
 
 import com.todolist.adapters.persistence.mappers.TaskEntityMapper;
-import com.todolist.adapters.persistence.mappers.TaskMapper;
 import com.todolist.domain.entities.Task;
 import com.todolist.domain.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
