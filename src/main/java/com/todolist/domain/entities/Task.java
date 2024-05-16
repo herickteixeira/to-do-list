@@ -25,7 +25,7 @@ public class Task {
         this.taskStatus = TaskStatus.INITIATED;
     }
 
-        public static Task create(String title, String description, Priority priority) {
+    public static Task create(String title, String description, Priority priority) {
         return new Task(title, description, priority);
     }
 
