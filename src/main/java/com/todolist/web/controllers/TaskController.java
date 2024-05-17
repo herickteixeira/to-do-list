@@ -2,6 +2,7 @@ package com.todolist.web.controllers;
 
 import com.todolist.application.shared.TaskRequest;
 import com.todolist.application.shared.TaskResponse;
+import com.todolist.application.usecases.UpdateTaskUseCase;
 import com.todolist.application.usecases.create.CreateTaskUseCase;
 import com.todolist.application.usecases.get.GetAllTasksUseCase;
 import com.todolist.application.usecases.get.GetTaskByIdUseCase;
@@ -24,6 +25,9 @@ public class TaskController {
     @Autowired
     private GetTaskByIdUseCase getTaskByIdUseCase;
 
+    @Autowired
+    private UpdateTaskUseCase updateTaskUseCase;
+
     @PostMapping
     public ResponseEntity<Task> save(@RequestBody TaskRequest taskRequest) {
         createTaskUseCase.execute(taskRequest);
@@ -40,5 +44,11 @@ public class TaskController {
     public ResponseEntity<TaskResponse> getTaskById(@PathVariable String id) {
         var taskResponse = getTaskByIdUseCase.execute(id);
         return ResponseEntity.ok(taskResponse);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateTask(@PathVariable String id, @RequestBody TaskRequest request) {
+        var response = updateTaskUseCase.execute(id, request);
+        return ResponseEntity.ok(response);
     }
 }

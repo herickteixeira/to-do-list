@@ -34,11 +34,6 @@ public class TaskRepositoryImpl implements TaskRepository {
     }
 
     @Override
-    public void update(String id, Task task) {
-
-    }
-
-    @Override
     public void delete(String id) {
 
     }

@@ -12,7 +12,5 @@ public interface TaskRepository {
 
     void save(Task task);
 
-    void update(String id, Task task);
-
     void delete(String id);
 }

@@ -4,9 +4,9 @@ import com.todolist.application.shared.TaskResponse;
 import com.todolist.application.shared.TaskResponseMapper;
 import com.todolist.domain.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
-
+@Component
 public class GetTaskByIdUseCase {
 
     @Autowired
