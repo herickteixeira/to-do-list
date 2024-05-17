@@ -4,6 +4,7 @@ import com.todolist.application.shared.TaskRequest;
 import com.todolist.application.shared.TaskResponse;
 import com.todolist.application.usecases.create.CreateTaskUseCase;
 import com.todolist.application.usecases.get.GetAllTasksUseCase;
+import com.todolist.application.usecases.get.GetTaskByIdUseCase;
 import com.todolist.domain.entities.Task;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,9 +19,10 @@ public class TaskController {
 
     @Autowired
     private CreateTaskUseCase createTaskUseCase;
-
     @Autowired
     private GetAllTasksUseCase getAllTasksUseCase;
+    @Autowired
+    private GetTaskByIdUseCase getTaskByIdUseCase;
 
     @PostMapping
     public ResponseEntity<Task> save(@RequestBody TaskRequest taskRequest) {
@@ -31,6 +33,12 @@ public class TaskController {
     @GetMapping
     public ResponseEntity<List<TaskResponse>> getAllItems() {
         var taskResponse = getAllTasksUseCase.execute();
+        return ResponseEntity.ok(taskResponse);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<TaskResponse> getTaskById(@PathVariable String id) {
+        var taskResponse = getTaskByIdUseCase.execute(id);
         return ResponseEntity.ok(taskResponse);
     }
 }

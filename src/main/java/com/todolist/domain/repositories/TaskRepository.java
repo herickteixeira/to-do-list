@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TaskRepository {
-    Optional<Task> getTaskById(Long id);
+    Optional<Task> getTaskById(String id);
 
     List<Task> getAllTasks();
 
     void save(Task task);
 
-    void update(Long id, Task task);
+    void update(String id, Task task);
 
-    void delete(Long id);
+    void delete(String id);
 }

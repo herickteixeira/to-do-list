@@ -17,8 +17,10 @@ public class TaskRepositoryImpl implements TaskRepository {
     private TaskRepositoryMongo taskRepositoryMongo;
 
     @Override
-    public Optional<Task> getTaskById(Long id) {
-        return Optional.empty();
+    public Optional<Task> getTaskById(String id) {
+        var optionalTask = taskRepositoryMongo.findById(id);
+        if (optionalTask.isEmpty()) Optional.empty();
+        return Optional.of(TaskMapper.map(optionalTask.get()));
     }
 
     @Override
@@ -32,12 +34,12 @@ public class TaskRepositoryImpl implements TaskRepository {
     }
 
     @Override
-    public void update(Long id, Task task) {
+    public void update(String id, Task task) {
 
     }
 
     @Override
-    public void delete(Long id) {
+    public void delete(String id) {
 
     }
 }
