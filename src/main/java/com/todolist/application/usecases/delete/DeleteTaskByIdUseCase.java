@@ -7,12 +7,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class DeleteTaskByIdUseCase {
 
-    private final TaskRepository taskRepository;
-
     @Autowired
-    public DeleteTaskByIdUseCase(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
-    }
+    private TaskRepository taskRepository;
 
     public void execute(String id) {
         var optionalTask = taskRepository.getTaskById(id);
