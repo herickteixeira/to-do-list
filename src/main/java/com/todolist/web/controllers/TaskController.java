@@ -2,7 +2,8 @@ package com.todolist.web.controllers;
 
 import com.todolist.application.shared.TaskRequest;
 import com.todolist.application.shared.TaskResponse;
-import com.todolist.application.usecases.UpdateTaskUseCase;
+import com.todolist.application.usecases.delete.DeleteTaskByIdUseCase;
+import com.todolist.application.usecases.update.UpdateTaskUseCase;
 import com.todolist.application.usecases.create.CreateTaskUseCase;
 import com.todolist.application.usecases.get.GetAllTasksUseCase;
 import com.todolist.application.usecases.get.GetTaskByIdUseCase;
@@ -24,9 +25,10 @@ public class TaskController {
     private GetAllTasksUseCase getAllTasksUseCase;
     @Autowired
     private GetTaskByIdUseCase getTaskByIdUseCase;
-
     @Autowired
     private UpdateTaskUseCase updateTaskUseCase;
+    @Autowired
+    private DeleteTaskByIdUseCase deleteTaskByIdUseCase;
 
     @PostMapping
     public ResponseEntity<Task> save(@RequestBody TaskRequest taskRequest) {
@@ -50,5 +52,11 @@ public class TaskController {
     public ResponseEntity<?> updateTask(@PathVariable String id, @RequestBody TaskRequest request) {
         var response = updateTaskUseCase.execute(id, request);
         return ResponseEntity.ok(response);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTaskById(@PathVariable String id) {
+        deleteTaskByIdUseCase.execute(id);
+        return ResponseEntity.ok().build();
     }
 }

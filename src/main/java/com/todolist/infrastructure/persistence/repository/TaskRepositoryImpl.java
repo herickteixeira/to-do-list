@@ -35,6 +35,6 @@ public class TaskRepositoryImpl implements TaskRepository {
 
     @Override
     public void delete(String id) {
-
+        taskRepositoryMongo.deleteById(id);
     }
 }

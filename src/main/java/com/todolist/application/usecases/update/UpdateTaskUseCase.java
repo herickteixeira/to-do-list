@@ -1,4 +1,4 @@
-package com.todolist.application.usecases;
+package com.todolist.application.usecases.update;
 
 import com.todolist.application.shared.TaskRequest;
 import com.todolist.application.shared.TaskResponse;
