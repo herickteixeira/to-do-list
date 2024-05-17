@@ -3,4 +3,13 @@ spring:
     name: to-do-list
   data:
     mongodb:
-      uri: mongodb://localhost:27017/tasks-db
+      username: root
+      password: secret
+      database: tasks-db
+      port: 27017
+      host: mongodb
+  #      uri: mongodb://mongodb:27017/tasks-db
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: none

@@ -1,11 +1,7 @@
-package com.todolist.adapters.persistence.entities;
+package com.todolist.infrastructure.persistence.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Getter;
-import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
@@ -15,30 +11,21 @@ import java.time.LocalDateTime;
 public class TaskEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;
 
-    @Column(nullable = false)
     private String title;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
     private String description;
 
-    @CreationTimestamp
-    @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @CreationTimestamp
-    @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
-    @Column(nullable = false)
     private String priority;
 
-    @Column(nullable = false)
     private String taskStatus;
 
-    public TaskEntity(Long id, String title, String description, LocalDateTime createdAt, LocalDateTime updatedAt, String priority, String taskStatus) {
+    public TaskEntity(String id, String title, String description, LocalDateTime createdAt, LocalDateTime updatedAt, String priority, String taskStatus) {
         this.id = id;
         this.title = title;
         this.description = description;

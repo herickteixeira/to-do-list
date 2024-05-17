@@ -1,7 +1,7 @@
-package com.todolist.adapters.persistence.mappers;
+package com.todolist.infrastructure.persistence.mappers;
 
-import com.todolist.adapters.persistence.entities.TaskEntity;
 import com.todolist.domain.entities.Task;
+import com.todolist.infrastructure.persistence.entities.TaskEntity;
 
 import java.util.ArrayList;
 import java.util.List;

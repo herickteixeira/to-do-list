@@ -1,8 +1,9 @@
-package com.todolist.adapters.persistence.repository;
+package com.todolist.infrastructure.persistence.repository;
 
-import com.todolist.adapters.persistence.mappers.TaskEntityMapper;
 import com.todolist.domain.entities.Task;
 import com.todolist.domain.repositories.TaskRepository;
+import com.todolist.infrastructure.persistence.mappers.TaskEntityMapper;
+import com.todolist.infrastructure.persistence.mappers.TaskMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +23,7 @@ public class TaskRepositoryImpl implements TaskRepository {
 
     @Override
     public List<Task> getAllTasks() {
-        return List.of();
+        return TaskMapper.map(taskRepositoryMongo.findAll());
     }
 
     @Override

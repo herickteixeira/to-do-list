@@ -4,14 +4,16 @@ import com.todolist.domain.enums.Priority;
 import com.todolist.domain.enums.TaskStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Task {
-    private Long id;
-    private final LocalDateTime createdAt;
+    private String id;
+    private LocalDateTime createdAt;
     private String title;
     private String description;
     private LocalDateTime updatedAt;

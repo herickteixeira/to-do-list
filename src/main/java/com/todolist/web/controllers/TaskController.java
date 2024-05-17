@@ -30,7 +30,7 @@ public class TaskController {
 
     @GetMapping
     public ResponseEntity<List<TaskResponse>> getAllItems() {
-        var taskResponse= getAllTasksUseCase.execute();
+        var taskResponse = getAllTasksUseCase.execute();
         return ResponseEntity.ok(taskResponse);
     }
 }
